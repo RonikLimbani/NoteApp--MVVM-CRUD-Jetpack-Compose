@@ -17,8 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -39,6 +37,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ronik.noteapp.R
+import com.ronik.noteapp.core.util.TestTags.CONTENT_TEXT_FIELD
+import com.ronik.noteapp.core.util.TestTags.TITLE_TEXT_FIELD
 import com.ronik.noteapp.domain.model.Note
 import com.ronik.noteapp.presentation.add_edit_note.componets.TransparentHintTextField
 import kotlinx.coroutines.flow.collectLatest
@@ -83,7 +83,7 @@ fun AddEditNoteScreen(
                 },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
-                Icon(painter = painterResource(R.drawable.save), contentDescription = "Save note")
+                Icon(painter = painterResource(R.drawable.save), contentDescription = "Save")
             }
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -142,7 +142,8 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = titleState.isHintVisible,
                 singleLine = true,
-                textStyle = MaterialTheme.typography.headlineMedium
+                textStyle = MaterialTheme.typography.headlineMedium,
+                testTag = TITLE_TEXT_FIELD
             )
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
@@ -156,7 +157,8 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = contentState.isHintVisible,
                 textStyle = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.fillMaxHeight()
+                modifier = Modifier.fillMaxHeight(),
+                testTag = CONTENT_TEXT_FIELD
             )
         }
     }

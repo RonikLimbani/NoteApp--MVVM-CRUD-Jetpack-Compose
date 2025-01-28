@@ -18,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.ronik.noteapp.HiltTestRunner"
     }
 
     buildTypes {
@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    //Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -59,6 +60,30 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Local unit tests
+//    testImplementation "androidx.test:core:1.4.0"
+//    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation (libs.jetbrains.kotlinx.coroutines.test)
+    testImplementation (libs.truth)
+    testImplementation (libs.mockwebserver)
+    testImplementation (libs.mockk)
+
+    // Instrumentation tests
+    androidTestImplementation (libs.hilt.android.testing)
+    kaptAndroidTest (libs.hilt.android.compiler)
+    androidTestImplementation (libs.junit)
+    androidTestImplementation (libs.jetbrains.kotlinx.coroutines.test)
+    androidTestImplementation (libs.androidx.core.testing)
+    androidTestImplementation (libs.truth)
+    androidTestImplementation (libs.core.ktx)
+    androidTestImplementation (libs.mockwebserver)
+    androidTestImplementation (libs.mockk.android)
+    androidTestImplementation (libs.androidx.runner)
+
+    androidTestImplementation ("com.linkedin.dexmaker:dexmaker-mockito:2.28.4")
+
+
 
     // Compose dependencies
     implementation(libs.androidx.lifecycle.viewmodel.compose)
